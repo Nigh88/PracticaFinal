@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>    
+    <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Sell Or Buy
+            </a>
+    
+            <ul class="nav navbar-nav">
+                <% getLocales().forEach( locale => { %>
+                  <a href="/change-locale/<%= locale %>"><%= locale %></a>&nbsp;
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+    <p><%= __('Welcome to') %> <%= title %></p>
+
+    <h2><%= __('Advertisements') %></h2>
+      <% anuncios.forEach(Anuncio => { %>
+        <p><%= Anuncio.name %></p>
+        <p><%= Anuncio.price %></p>
+        <p><img src = "../images/<%= Anuncio.photo %>"/></p>
+      <% }) %>
+    <div>
+      <% if (pages > 0) { %>
+        <ul class="pagination text-center">
+            <% if (current == 1) { %>
+                <li class="disabled"><a><%= __('First') %></a></li>
+            <% } else { %>
+                <li><a href="?page=1"><%= __('First') %></a></li>
+            <% } %>
+            <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+            <% if (i !== 1) { %>
+                <li class="disabled"><a>...</a></li>
+            <% } %>
+            <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                <% if (i == current) { %>
+                    <li class="active"><a><%= i %></a></li>
+                <% } else { %>
+                    <li><a href="?page=<%= i %>"><%= i %></a></li>
+                <% } %>
+                <% if (i == Number(current) + 4 && i < pages) { %>
+                    <li class="disabled"><a>...</a></li>
+                <% } %>
+            <% } %>
+            <% if (current == pages) { %>
+                <li class="disabled"><a><%= __('Last') %></a></li>
+            <% } else { %>
+                <li><a href="?page=<%= pages %>"><%= __('Last') %></a></li>
+            <% } %>
+        </ul>
+      <% } %>
+    </div>
+  </body>
+</html>
