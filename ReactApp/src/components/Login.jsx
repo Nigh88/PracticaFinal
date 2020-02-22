@@ -32,12 +32,13 @@ class Login extends Component {
     loginUser(user)
     .then(
         res => {
-            this.props.history.push('/userHome');
+          if(res.success){
+            this.props.history.push('/Home');
             localStorage.setItem('token', (res.token))
-        },
-        error => {
-           error.toString()
-        }
+          } else {
+              alert(res.error)
+        }       
+      }
     );
   }
   
@@ -78,7 +79,7 @@ class Login extends Component {
                   />
               </div>
 
-              <div class="forgot_passwprd">
+              <div class="forgot_password">
                 <a class="recover_password" href='/forgot_password'>Did you forget your password?</a>
               </div>
 

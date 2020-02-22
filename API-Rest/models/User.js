@@ -5,9 +5,11 @@ const nodemailerTransport = require('../lib/nodemailerConfigure');
 
 const userSchema = mongoose.Schema({
   name: {  type: String, required: true },
-  surname: {  type: String, required: true },
   email: { type: String, unique: true, required: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  token: {type: String, required: false},
+  resetPasswordToken: {type: String, required: false},
+  resetPasswordExpires: {type: Number, required: false}
 });
 
 

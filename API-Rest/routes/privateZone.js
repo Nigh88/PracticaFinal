@@ -7,15 +7,17 @@ class PrivateZone {
   async getUserId(req, res, next) {
     try {
       
-      const token = req.body.user.token;
+      const token = req.headers.authorization.replace('Bearer ', '');
+      var decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const user = await User.findOne({ _id: decoded._id });
+      
+      if(!user){
+        res.json({ success: false, error: res.__('User not found.') });
+        return;
+      } else {
+        res.json({ success: true, user: user});
+      }
 
-    //   const user = await User.findOne({ token: token });
-
-      const okToken = jwt.decode({ _id: user._id }, process.env.JWT_SECRET, {
-        expiresIn: '2d'
-      });
-
-      res.json({ success: true, token: okToken });
 
     } catch(err) {
       next(err);

@@ -43,13 +43,13 @@ export default class Home extends Component {
     this.setState({ currentPage, currentAdverts, totalPages });
   }
 
-  // onChangeText = (query) => {
-  //   if (query && query.trim().length){
-  //     searchAdvert(query).then(adverts => this.setState({adverts}));
-  //   }else{
-  //     this.findAdverts()
-  //   }
-  // }
+  onChangeText = (query) => {
+    if (query && query.trim().length){
+      searchAdvert(query).then(adverts => this.setState({adverts}));
+    }else{
+      this.findAdverts()
+    }
+  }
 
   // render(){
   //   const { adverts } = this.state
@@ -64,7 +64,7 @@ export default class Home extends Component {
 
   render() {
 
-    const { adverts, currentAdverts, currentPage} = this.state;
+    const { adverts, currentAdverts} = this.state;
     const totalAdverts = adverts.length;
 
     if (totalAdverts === 0) return null;

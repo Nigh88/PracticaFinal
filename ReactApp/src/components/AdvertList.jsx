@@ -34,7 +34,7 @@ export default class Adverts extends Component {
           adverts.length === 0)
           &&
           <div className="text-center mt-5">
-            <h2>No hay anuncios</h2>
+            <h2>Adverts not found</h2>
           </div>
         }
       </React.Fragment>

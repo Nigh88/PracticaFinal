@@ -19,7 +19,7 @@ class LoginController {
       }
 
       const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-        expiresIn: '1'
+        expiresIn: '2d'
       });
 
       res.json({ success: true, token: token });

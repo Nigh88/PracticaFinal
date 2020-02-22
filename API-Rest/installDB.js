@@ -1,7 +1,7 @@
 'use strict';
 
-const data = require('./data/anuncios.json');
-const Anuncio = require('./models/Anuncio');
+const data = require('./data/adverts.json');
+const Advert = require('./models/Advert');
 const User = require('./models/User');
 const mongoose = require('mongoose');
 const conn = mongoose.connection;
@@ -9,8 +9,8 @@ const conn = mongoose.connection;
 
 conn.once('open', async () => {
   console.log('Creating DB in', mongoose.connection.name);
-  await Anuncio.deleteMany({});
-  Anuncio.insertMany(data);
+  await Advert.deleteMany({});
+  Advert.insertMany(data);
   await initUsers();
 });
 
@@ -19,10 +19,19 @@ async function initUsers() {
   await User.deleteMany();
   await User.insertMany([
     {
-      name: 'Rehis',
-      surname: 'Rejas Mollejas',
-      email: 'user@example.com',
-      password: '1234'
+      name: 'KickBill',
+      email: 'ball@example.com',
+      password: 'aaa23'
+    },
+    {
+      name: 'Snowy',
+      email: 'sun@example.com',
+      password: 'lol11'
+    },
+    {
+      name: 'Firechicken',
+      email: 'egg@example.com',
+      password: '091fi'
     }
   ]);
 }

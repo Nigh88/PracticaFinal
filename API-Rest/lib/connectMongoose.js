@@ -1,7 +1,7 @@
 'use strict';
 
-const data = require('../data/anuncios.json');
-const Anuncio = require('../models/Anuncio');
+const data = require('../data/adverts.json');
+const Advert = require('../models/Advert');
 
 // Library
 const mongoose = require('mongoose');
@@ -17,8 +17,8 @@ conn.on('error', err => {
 
 conn.once('open', async () => {
   console.log('Connected to MongoDB in', conn.name);
-  const res = await Anuncio.deleteMany({});
-  Anuncio.insertMany(data);
+  const res = await Advert.deleteMany({});
+  Advert.insertMany(data);
 });
 
 // Conexion

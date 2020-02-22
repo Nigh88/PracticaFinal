@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 
 //Conexion DB
 const mongooseConnection = require('./lib/connectMongoose');
-require('./models/Anuncio');
+require('./models/Advert');
 require('./models/User');
 const loginController = require('./routes/loginController');
 const jwtAuth = require('./lib/jwtAuth');
@@ -48,12 +48,12 @@ const forgotPassword = require('./routes/forgotPassword');
 const privateZone = require('./routes/privateZone')
 const resetPassword = require('./routes/resetPassword')
 
-app.use('/api/anuncios', require('./routes/api/anuncios'));
-app.use('/api/user_anuncios', jwtAuth(), require('./routes/api/anuncios'));
+app.use('/api/adverts', require('./routes/api/adverts'));
+app.use('/api/user_advert', jwtAuth(), require('./routes/api/adverts'));
 app.post('/api/login', loginController.loginJWT);
 app.post('/api/user/register', register.register);
 app.post('/api/forgotPassword', forgotPassword.recoverPassword);
-app.get('/api/Profile', privateZone.getUserId);
+app.get('/api/profile', privateZone.getUserId);
 app.put('/api/reset', resetPassword.updatePassword);
 
 app.use('/change-locale', require('./routes/change-locale'));

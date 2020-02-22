@@ -26,23 +26,21 @@ class Reset extends Component {
     onSubmit = (event) => {
         event.preventDefault();
         const {token} = this.props.match.params
-    //     const { onSubmit = () => {} } = this.props;
-
-    //     this.props.form.validateFields((err, values) => {
-    //         if (err) return;
-    //         const { match = {} } = this.props;
-    //         const { params = {} } = match;
-    //         const token = params.token;
-    //         onSubmit({
-    //         ...values,
-    //         token
-    //     });
-    // });
         const { password, passwordConfirmation} = this.state;
+        
         if (password !== passwordConfirmation) {
             alert("Password and password confirmation are not the same")
         } else {
             resetPassword(password, token)
+            .then(
+                res => {
+                    if(res.success){
+                      this.props.history.push('/Home');
+                    } else {
+                        alert(res.error)
+                    }
+                } 
+            )
         }
     }
 

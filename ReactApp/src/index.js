@@ -29,7 +29,6 @@ export default class App extends Component{
       var user = JSON.parse(userData)
       this.state = {
         name: user.name,
-        surname: user.surname,
       };
     }
     else{
@@ -40,7 +39,6 @@ export default class App extends Component{
 handleRegister = (user) => {
   this.setState({
     name: user.name,
-    surname: user.surname,
     email: user.email,
   });
 };
@@ -78,7 +76,10 @@ handleUpdate = (advert, _id) => {
           <PublicRoute restricted={false} path='/reset/:token' component={Reset} />
           <PrivateRoute  path='/userHome' component={UserHome} />
           <PrivateRoute  path='/profile' component={Profile} />
-          <PrivateRoute  path='/forgot_password' component={ForgotPassword} />
+          <PrivateRoute  path='/profile/update/:id'>
+            <CreateModifi onSubmit={this.handleUpdate}/>
+          </PrivateRoute>
+          <PublicRoute restricted={false} path='/forgot_password' component={ForgotPassword} />
           <PrivateRoute  path='/Create'>
             <CreateModifi onSubmit={this.handleCreate}/>
           </PrivateRoute>

@@ -8,28 +8,28 @@ export const searchTags = () => {
   };
   
   export const searchAdvert = (query) => {
-    return fetch(`${API}/api/anuncios`, {
+    return fetch(`${API}/api/adverts`, {
       method: "GET"
     }).then(res => res.json())
       .then(res => res.results);
   };
   
   export const searchAdvertId = (_id) => {
-    return fetch(`${API}/api/anuncios/${_id}`, {
+    return fetch(`${API}/api/adverts/${_id}`, {
       method: "GET"
     }).then(res => res.json())
     .then(res => res.result);
   };
   
   export const findAdverts = (query) => {
-      return fetch(`${API}/api/anuncios${query}`, {
+      return fetch(`${API}/api/adverts${query}`, {
       method: "GET"
     }).then(res => res.json())
       .then(res => res.results);
   };
   
   export const createAdvert = (advert) => {
-    return fetch(`${API}/api/anuncios`, {
+    return fetch(`${API}/api/adverts`, {
       method: "POST",
       body: advert,
       headers: {
@@ -39,7 +39,7 @@ export const searchTags = () => {
   };
   
   export const updateAdvert = (advert, _id) => {
-    return fetch(`${API}/api/anuncios/${_id}`, {
+    return fetch(`${API}/api/adverts/${_id}`, {
       method: "PUT",
       body: JSON.stringify(advert),
       headers: {

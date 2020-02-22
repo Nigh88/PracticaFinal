@@ -3,19 +3,22 @@ import { withRouter } from "react-router-dom";
 import Validator from 'validator';
 import User from '../models/user';
 import UserContext from '../utils/user';
-import { getUser } from '../Services/userServices';
+import { getUser, updateUser, logoutUser } from '../Services/userServices';
 
 class Profile extends Component {
     constructor(props) {
         super(props);
-        const { user } = props;
-        console.log(localStorage)
-         this.state = {        
-            name: user.name,
-            surname: user.surname,
-            email: user.email,
-            password: user.password,
-        } 
+        this.state = {
+            name: '',
+            email: ''
+        }
+        getUser()
+        .then(res => {
+            this.setState ({ 
+            name: res.user.name,
+            email: res.user.email,
+            })
+        });
     }
 
     onInputChange = (event) => {
@@ -28,28 +31,37 @@ class Profile extends Component {
         this.setState({tags:event[0].label});
       };
 
-    // onSubmit = (event) => {
-    //     event.preventDefault();
+    onSubmit = (event) => {
+        event.preventDefault();
+        const user= this.state;
 
-    //     if (!this.state.name || this.state.name.trim().length < 3) {
-    //         alert("Name is too short. At least 3 characters");
-    //         return;
-    //     }
+        if (!this.state.name || this.state.name.trim().length < 3) {
+            alert("Name is too short. At least 3 characters");
+            return;
+        }
 
-    //     if (!this.state.surname || this.state.surname.trim().length < 3) {
-    //         alert("Surmane is too short. At least 3 characters")
-    //     }
+        if (!Validator.isEmail(this.state.email)) {
+            alert('Invalid email')
+            return;
+        }
 
-    //     if (!Validator.isEmail(this.state.email)) {
-    //         alert('Invalid email')
-    //     }
-
-    //     this.props.register(this.state)
-        
-    // }
+        updateUser(user)
+        .then(
+            res => { 
+                console.log(res)
+                if(res.success){
+                this.props.onSubmit({
+                    name: this.state.name,
+                    email: this.state.email,
+                    }); 
+                    this.props.history.push('/Profile');
+                }  
+            }
+        )  
+    }
 
     render() {
-        const { name, surname, email, password} = this.state;
+        const { name, email} = this.state;
         const {userExists} = this.props;
         const cardStyle = {
             margin: '1rem'
@@ -74,19 +86,6 @@ class Profile extends Component {
                         </div>
 
                         <div className="form-group">
-                            <label for="surname">Surname</label>
-                            <input
-                            className="form-control"
-                            id="surname"
-                            name="surname"
-                            type="text"
-                            value={surname}
-                            onChange={this.onInputChange}
-                            placeholder="Write your surname"
-                            />
-                        </div>
-
-                        <div className="form-group">
                             <label for="email">Email</label>
                             <input
                             className="form-control"
@@ -100,21 +99,11 @@ class Profile extends Component {
                             />
                         </div>
 
-                        <div className="form-group">
-                            <label for="password">Password</label>
-                            <input
-                            className="form-control"
-                            id="password"
-                            name="password"
-                            type="password"
-                            value={password}
-                            onChange={this.onInputChange}
-                            placeholder="Write your password"
-                            />
-                        </div>
-
                         <button type='submit' className="btn btn-primary">Update</button>
-                        <button type='submit' className="btn btn-primary">Logout</button>
+                        <button type='button' className="btn btn-primary">Logout</button>
+                        <div class="delete">
+                            <a class="deleteAccount" href='/deleteAccount'>Delete this account</a>
+                        </div>
                     </form>
                 </div>
             </React.Fragment>

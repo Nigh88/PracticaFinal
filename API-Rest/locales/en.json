@@ -6,5 +6,6 @@
 	"Last": "Last",
 	"EXAMPLE": "EXAMPLE",
 	"This user is already in use.": "This user is already in use.",
-	"This email is already in use.": "This email is already in use."
+	"This email is already in use.": "This email is already in use.",
+	"Invalid token.": "Invalid token."
 }

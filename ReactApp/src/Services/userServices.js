@@ -62,11 +62,12 @@ export const userTaken = user => {
 )};
 
 export const getUser = () => {
-  return fetch(`${API}/api/user/`, {
+  return fetch(`${API}/api/profile/`, {
     method: 'GET',
-    headers: {...authHeader() }
-  }
-)};
+    headers: {...authHeader() },
+  })
+  .then(res => res.json())
+};
 
 export const updateUser = user => {
   return fetch(`${API}/api/user/${user.id}`, {

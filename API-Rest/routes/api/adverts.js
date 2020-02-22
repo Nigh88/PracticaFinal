@@ -7,7 +7,7 @@ const path = require('path');
 
 
 const sendToQueue = require('../../rabbitmq/rabbitConnect')
-const Anuncio = require('../../models/Anuncio');
+const Advert = require('../../models/Advert');
 const jwtAuth = require('../../lib/jwtAuth');
 // const upload = multer({dest: './public/uploads/'})
 
@@ -71,9 +71,9 @@ router.get('/', async (req, res, next) => {
         }
       
 
-        const anuncios = await Anuncio.list({ filter: filter, skip, limit, tags, sort});
+        const adverts = await Advert.list({ filter: filter, skip, limit, tags, sort});
 
-        res.json({ success: true, results: anuncios });
+        res.json({ success: true, results: adverts });
 
         } catch (err) {
         next(err);
@@ -84,14 +84,14 @@ router.get('/', async (req, res, next) => {
       try {
         const _id = req.params.id;
     
-        const anuncio = await Anuncio.findById(_id).exec();
+        const advert = await Adverts.findById(_id).exec();
     
-        if (!anuncio) {
+        if (!advert) {
           res.status(404).json({ success: false });
           return;
         }
     
-        res.json({ success: true, result: anuncio});
+        res.json({ success: true, result: advert});
     
       } catch(err) {
         next(err);
@@ -104,9 +104,9 @@ router.get('/', async (req, res, next) => {
       try {
         const data = req.body;
         data.photo = req.file.filename;
-        const anuncio = new Anuncio(data);
+        const advert = new Advert(data);
     
-        const saved = await anuncio.save();
+        const saved = await advert.save();
 
         await sendToQueue('Resize', data.photo);
     
