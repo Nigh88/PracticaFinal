@@ -1,13 +1,4 @@
 import API from './config';
-import axios from 'axios';
-// import * as types from '../actions/types'
-
-// export function setUser(user) {
-//   return {
-//     type: types.SET_USER,
-//     user
-//   };
-// }
 
  export function authHeader() {
   let token = localStorage.getItem('token');
@@ -25,7 +16,6 @@ export const loginUser = (user) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({user})
     })
-    // .then(setUser(user))
     .then(res => res.json())
 }
 
@@ -40,7 +30,7 @@ export const isLogin = () => {
 }
 
 export const logoutUser = () => {
-  localStorage.removeItem('user');
+  localStorage.removeItem('token');
 }
 
 
@@ -53,13 +43,13 @@ export const registerUser = (user) => {
   .then(res => res.json())
 };
 
-export const userTaken = user => {
-    return fetch(`${API}/api/user/${user.id}`, {
-        method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(user)
-      }
-)};
+// export const userTaken = user => {
+//     return fetch(`${API}/api/user/${user.id}`, {
+//         method: 'GET',
+//             headers: { 'Content-Type': 'application/json' },
+//             body: JSON.stringify(user)
+//       }
+// )};
 
 export const getUser = () => {
   return fetch(`${API}/api/profile/`, {
@@ -69,8 +59,8 @@ export const getUser = () => {
   .then(res => res.json())
 };
 
-export const updateUser = user => {
-  return fetch(`${API}/api/user/${user.id}`, {
+export const updateUser = (user) => {
+  return fetch(`${API}/api/update/`, {
     method: 'PUT',
         headers: {...authHeader(), 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
@@ -93,3 +83,11 @@ export const sendEmail = email => {
             body: JSON.stringify({password: password, token: token})
       }
     )};
+  
+  export const deleteAccount = (user) => {
+    return fetch(`${API}/api/delete/${user.name}`, {
+      method: 'delete',
+      headers: {...authHeader(), 'Content-Type': 'application/json' },
+      body: JSON.stringify(user)
+    }
+  )};

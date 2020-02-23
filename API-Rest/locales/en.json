@@ -7,5 +7,6 @@
 	"EXAMPLE": "EXAMPLE",
 	"This user is already in use.": "This user is already in use.",
 	"This email is already in use.": "This email is already in use.",
-	"Invalid token.": "Invalid token."
+	"Invalid token.": "Invalid token.",
+	"User not found.": "User not found."
 }

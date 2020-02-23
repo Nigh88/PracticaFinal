@@ -27,6 +27,13 @@ export const searchTags = () => {
     }).then(res => res.json())
       .then(res => res.results);
   };
+
+  export const ownerAdverts = (owner) => {
+    return fetch(`${API}/api/adverts/${owner}`, {
+    method: "GET"
+  }).then(res => res.json())
+    .then(res => res.results);
+};
   
   export const createAdvert = (advert) => {
     return fetch(`${API}/api/adverts`, {

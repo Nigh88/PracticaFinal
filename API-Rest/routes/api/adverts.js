@@ -8,7 +8,6 @@ const path = require('path');
 
 const sendToQueue = require('../../rabbitmq/rabbitConnect')
 const Advert = require('../../models/Advert');
-const jwtAuth = require('../../lib/jwtAuth');
 // const upload = multer({dest: './public/uploads/'})
 
 var storage = multer.diskStorage({
@@ -29,18 +28,14 @@ router.get('/', async (req, res, next) => {
         const sell = req.query.sell;
         const skip = parseInt(req.query.skip);
         const limit = parseInt(req.query.limit);
-        const tags = req.query.tags;
+        const tags = req.query.tag;
         const sort = req.query.sort;
         const price = req.query.price;
 
         const filter = {};
 
         if (name) {
-            filter.name = name;
-        }
-
-        if (name) {
-          filter.name = new RegExp('^' + name, "i");
+          filter.name = new RegExp(name, "i");
       }
 
         if (typeof sell !== 'undefined') {
@@ -48,7 +43,7 @@ router.get('/', async (req, res, next) => {
         }
 
         if (typeof tags !== 'undefined') {
-          filter.tags = tags;
+          filter.tags = { "$in": [tags] };
         }
 
         if (typeof price !== 'undefined') {
@@ -71,7 +66,7 @@ router.get('/', async (req, res, next) => {
         }
       
 
-        const adverts = await Advert.list({ filter: filter, skip, limit, tags, sort});
+        const adverts = await Advert.list({ filter: filter, skip, limit, sort});
 
         res.json({ success: true, results: adverts });
 
@@ -85,6 +80,24 @@ router.get('/', async (req, res, next) => {
         const _id = req.params.id;
     
         const advert = await Adverts.findById(_id).exec();
+    
+        if (!advert) {
+          res.status(404).json({ success: false });
+          return;
+        }
+    
+        res.json({ success: true, result: advert});
+    
+      } catch(err) {
+        next(err);
+      }
+    });
+
+    router.get('/:owner', async (req, res, next) => {
+      try {
+        const owner = req.params.owner;
+    
+        const advert = await Adverts.find({owner: owner}).exec();
     
         if (!advert) {
           res.status(404).json({ success: false });

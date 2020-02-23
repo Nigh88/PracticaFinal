@@ -45,8 +45,9 @@ const loginController = require('./routes/loginController');
 const jwtAuth = require('./lib/jwtAuth');
 const register = require('./routes/registerController');
 const forgotPassword = require('./routes/forgotPassword');
-const privateZone = require('./routes/privateZone')
-const resetPassword = require('./routes/resetPassword')
+const privateZone = require('./routes/privateZone');
+const resetPassword = require('./routes/resetPassword');
+const updateUser = require('./routes/updateUser');
 
 app.use('/api/adverts', require('./routes/api/adverts'));
 app.use('/api/user_advert', jwtAuth(), require('./routes/api/adverts'));
@@ -55,6 +56,7 @@ app.post('/api/user/register', register.register);
 app.post('/api/forgotPassword', forgotPassword.recoverPassword);
 app.get('/api/profile', privateZone.getUserId);
 app.put('/api/reset', resetPassword.updatePassword);
+app.put('/api/update/', updateUser.update);
 
 app.use('/change-locale', require('./routes/change-locale'));
 app.use('/', indexRouter);

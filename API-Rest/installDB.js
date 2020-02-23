@@ -21,17 +21,17 @@ async function initUsers() {
     {
       name: 'KickBill',
       email: 'ball@example.com',
-      password: 'aaa23'
+      password: '$2b$10$70anus594rxPP2MJw4YwH.a5zWhlICjF1B62uLoeX.zdq0MA9cYym'
     },
     {
       name: 'Snowy',
       email: 'sun@example.com',
-      password: 'lol11'
+      password: '$2b$10$VQ1UEO6aoFblw9Mp9e6gIelHwHXby9f/rVCYLORoavnHO1w3TSOZC'
     },
     {
       name: 'Firechicken',
       email: 'egg@example.com',
-      password: '091fi'
+      password: '$2b$10$p5qLgXOTAalb740vtmjfXebz56bfSJVYDgI4XXt7.Reuuluwbowsa' 
     }
   ]);
 }

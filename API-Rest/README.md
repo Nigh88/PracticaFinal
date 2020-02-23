@@ -52,3 +52,17 @@ npm run dev
 
 # Desconexion del servidor
 ctrl + C
+
+#### Users ####
+
+name: Firechicken
+email: egg@example.com
+password: 091fi
+
+name: KickBill
+email: ball@example.com
+password: aaa23
+
+name: Snowy
+email: sun@example.com
+password: lol11

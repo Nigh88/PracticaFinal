@@ -26,7 +26,8 @@ class Advert extends Component {
             price: advertJson.price,
             type: advertJson.type,
             photo: advertJson.photo,
-            tags: advertJson.tags
+            tags: advertJson.tags,
+            owner: advertJson.owner
           };
   
         this.setState({
@@ -67,6 +68,7 @@ class Advert extends Component {
               <li className="list-group-item">{advert.price}</li>
               <li className="list-group-item">{advert.type}</li>
               <li className="list-group-item">{advert.tags}</li>
+              <li className="list-group-item">{advert.owner}</li>
             </ul>
             {!this.state.advert.id?(
             <div className="card-body">

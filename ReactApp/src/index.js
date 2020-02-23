@@ -9,8 +9,8 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-import UserHome from './UserComponents/UserHome';
 import Profile from './UserComponents/Profile';
+import myAdverts from './UserComponents/myAdverts';
 import CreateModifi from './components/CreateModifi';
 import './index.css';
 import Advert from './components/Advert';
@@ -18,8 +18,6 @@ import { createAdvert, updateAdvert } from './Services/advertServices';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ForgotPassword from './components/ForgotPassword';
 import Reset from  './components/Reset';
-
-// import Login2 from './components/MOD';
 
 export default class App extends Component{
   constructor(props) {
@@ -32,7 +30,7 @@ export default class App extends Component{
       };
     }
     else{
-      // props.history.push('/Register')
+      
     }
   }
 
@@ -70,11 +68,10 @@ handleUpdate = (advert, _id) => {
           <PublicRoute restricted={false} path='/login'>
             <Login onLogin={this.handleLogin} />
           </PublicRoute>
-          {/* <PublicRoute restricted={false} path='/Login2' component={Login2} /> */}
           <PublicRoute restricted={false} path='/Advert/:id' component={Advert} />
           <PublicRoute restricted={false} path='/Home' component={Home} />
           <PublicRoute restricted={false} path='/reset/:token' component={Reset} />
-          <PrivateRoute  path='/userHome' component={UserHome} />
+          <PrivateRoute  path='/adverts/:name' component={myAdverts} />
           <PrivateRoute  path='/profile' component={Profile} />
           <PrivateRoute  path='/profile/update/:id'>
             <CreateModifi onSubmit={this.handleUpdate}/>

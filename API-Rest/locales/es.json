@@ -1,11 +1,8 @@
 {
-	"EXAMPLE": "ejemplo",
-	"Welcome to": "Bienvenido a",
 	"Advertisements": "Anuncios",
-	"First": "Primera",
-	"Last": "Última",
-	"Invalid credentials": "Invalid credentials",
-	"This user is already in use.": "This user is already in use.",
-	"This email is already in use.": "This email is already in use.",
-	"Invalid token.": "Invalid token."
+	"Invalid credentials": "Credenciales incorrectos",
+	"This user is already in use.": "Este usuario ya está en uso.",
+	"This email is already in use.": "Este email ya está en uso.",
+	"Invalid token.": "Token invalido",
+	"User not found.": "Usuario no encontrado"
 }

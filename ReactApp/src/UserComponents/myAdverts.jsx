@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Advert from './Advert';
-import { findAdverts, searchAdvert } from '../Services/advertServices';
-import Pagination from './Pagination';
+import Advert from '../components/Advert';
+import { ownerAdverts, searchAdvert } from '../Services/advertServices';
+import Pagination from '../components/Pagination';
 
-export default class Home extends Component {
+export default class myAdverts extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -16,11 +16,11 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    this.findAdverts()
+    this.ownerAdverts()
   }
 
-  findAdverts = () => {
-    findAdverts(this.props.location.search).then(adverts => {
+  ownerAdverts = () => {
+    ownerAdverts(this.props.location.search).then(adverts => {
       var i;
       var tempAdverts = [];
       for (i = 0; i < adverts.length -1; i++) {

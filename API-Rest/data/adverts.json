@@ -14,55 +14,63 @@
         "sell": false,       
         "price": 100,       
         "photo": "iphones5.jpg",      
-         "tags": [ "lifestyle", "mobile"]     
+        "tags": [ "lifestyle", "mobile"], 
+        "owner": "KickBill"
     },
     { 
         "name": "Ford Mustang",       
         "sell": true,       
         "price": 34999,       
         "photo": "mustang.jpg",       
-        "tags": [ "lifestyle", "motor"]     
+        "tags": [ "lifestyle", "motor"],
+        "owner": "Nigh"     
     }, 
     { 
         "name": "Snowboard",       
         "sell": true,       
         "price": 300,       
         "photo": "snowboard.jpg",       
-        "tags": [ "lifestyle"]     
+        "tags": [ "lifestyle"],
+        "owner": "Snowy"     
     },
     { 
         "name": "Hammer",       
         "sell": true,       
         "price": 30,       
         "photo": "hammer.jpg",       
-        "tags": [ "work"]     
+        "tags": [ "work"],
+        "owner": "Firechicken"     
     },
     { 
         "name": "Galaxy Tab S3",       
         "sell": true,       
         "price": 367,       
         "photo": "galaxytab.jpg",       
-        "tags": [ "lifestyle", "mobile"]     
+        "tags": [ "lifestyle", "mobile"],
+        "owner": "KickBill"     
     },
     { 
         "name": "TV Sony 32",       
         "sell": false,       
         "price": 2459,       
         "photo": "tvsony.jpg",       
-        "tags": [ "lifestyle"]     
+        "tags": [ "lifestyle"],
+        "owner": "KickBill"     
     },
     { 
         "name": "Office Desk",       
         "sell": true,       
         "price": 220,       
         "photo": "desk.jpg",       
-        "tags": [ "lifestyle", "work"]     
+        "tags": [ "lifestyle", "work"],
+        "owner": "Firechicken"     
     },
     { 
         "name": "Mini JCW",       
         "sell": true,       
         "price": 21999,       
         "photo": "minijcw.jpg",       
-        "tags": [ "lifestyle", "motor"]     
+        "tags": [ "lifestyle", "motor"],
+        "owner": "Snowy"     
     }
 ] 

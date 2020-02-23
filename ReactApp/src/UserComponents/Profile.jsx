@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import Validator from 'validator';
-import User from '../models/user';
 import UserContext from '../utils/user';
-import { getUser, updateUser, logoutUser } from '../Services/userServices';
+import { getUser, updateUser, logoutUser, deleteAccount} from '../Services/userServices';
 
 class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
             name: '',
-            email: ''
+            email: '',
         }
         getUser()
         .then(res => {
@@ -33,7 +32,7 @@ class Profile extends Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-        const user= this.state;
+        const user= this.state;        
 
         if (!this.state.name || this.state.name.trim().length < 3) {
             alert("Name is too short. At least 3 characters");
@@ -47,8 +46,7 @@ class Profile extends Component {
 
         updateUser(user)
         .then(
-            res => { 
-                console.log(res)
+            res => {
                 if(res.success){
                 this.props.onSubmit({
                     name: this.state.name,
@@ -58,6 +56,12 @@ class Profile extends Component {
                 }  
             }
         )  
+    }
+
+    logout = (event) => {
+        event.preventDefault();
+        logoutUser()
+        this.props.history.push('/login');
     }
 
     render() {
@@ -100,9 +104,9 @@ class Profile extends Component {
                         </div>
 
                         <button type='submit' className="btn btn-primary">Update</button>
-                        <button type='button' className="btn btn-primary">Logout</button>
+                        <button type='button' className="btn btn-secondary" onClick={this.logout}>Logout</button>
                         <div class="delete">
-                            <a class="deleteAccount" href='/deleteAccount'>Delete this account</a>
+                            <a class="deleteAccount" href='/Home' onClick={this.deleteAccount}>Delete this account</a>
                         </div>
                     </form>
                 </div>
