@@ -40,7 +40,7 @@ export default class Home extends Component {
     const offset = (currentPage - 1) * pageLimit;
     const currentAdverts = adverts.slice(offset, offset + pageLimit);
 
-    this.setState({ currentPage, currentAdverts, totalPages });
+    this.setState({ currentPage: currentPage, currentAdverts: currentAdverts, totalPages: totalPages });
   }
 
   onChangeText = (query) => {
@@ -56,6 +56,7 @@ export default class Home extends Component {
     const { adverts, currentAdverts} = this.state;
     const totalAdverts = adverts.length;
 
+    
     if (totalAdverts === 0) return null;
 
     return (

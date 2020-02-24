@@ -64,12 +64,22 @@ class Profile extends Component {
         this.props.history.push('/login');
     }
 
+    deleteUser = (event) => {
+        const user = this.state;
+        event.preventDefault();
+        deleteAccount(user)
+        this.props.history.push('/home');
+    }
+
     render() {
         const { name, email} = this.state;
         const {userExists} = this.props;
         const cardStyle = {
             margin: '1rem'
           };
+        const button = {
+            margin: '0.5rem'
+        }
 
         return(
             <React.Fragment>
@@ -103,11 +113,9 @@ class Profile extends Component {
                             />
                         </div>
 
-                        <button type='submit' className="btn btn-primary">Update</button>
-                        <button type='button' className="btn btn-secondary" onClick={this.logout}>Logout</button>
-                        <div class="delete">
-                            <a class="deleteAccount" href='/Home' onClick={this.deleteAccount}>Delete this account</a>
-                        </div>
+                        <button type='submit' style={button} className="btn btn-primary">Update</button>
+                        <button type='button' style={button} className="btn btn-secondary" onClick={this.logout}>Logout</button>
+                        <button type='button' style={button} className="btn btn-secondary" onClick={this.deleteUser}>Delete Account</button>
                     </form>
                 </div>
             </React.Fragment>

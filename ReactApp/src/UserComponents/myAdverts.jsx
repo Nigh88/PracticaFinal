@@ -20,7 +20,8 @@ export default class myAdverts extends Component {
   }
 
   ownerAdverts = () => {
-    ownerAdverts(this.props.location.search).then(adverts => {
+    const { name } = this.props.match.params
+    ownerAdverts(name).then(adverts => {
       var i;
       var tempAdverts = [];
       for (i = 0; i < adverts.length -1; i++) {

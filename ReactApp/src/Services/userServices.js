@@ -43,14 +43,6 @@ export const registerUser = (user) => {
   .then(res => res.json())
 };
 
-// export const userTaken = user => {
-//     return fetch(`${API}/api/user/${user.id}`, {
-//         method: 'GET',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify(user)
-//       }
-// )};
-
 export const getUser = () => {
   return fetch(`${API}/api/profile/`, {
     method: 'GET',
@@ -85,9 +77,10 @@ export const sendEmail = email => {
     )};
   
   export const deleteAccount = (user) => {
-    return fetch(`${API}/api/delete/${user.name}`, {
-      method: 'delete',
+    return fetch(`${API}/api/profile/user`, {
+      method: 'DELETE',
       headers: {...authHeader(), 'Content-Type': 'application/json' },
       body: JSON.stringify(user)
-    }
-  )};
+    }).then(res => res)
+    .catch(err => err);
+  };

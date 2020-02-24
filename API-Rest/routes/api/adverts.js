@@ -79,7 +79,7 @@ router.get('/', async (req, res, next) => {
       try {
         const _id = req.params.id;
     
-        const advert = await Adverts.findById(_id).exec();
+        const advert = await Advert.findById(_id).exec();
     
         if (!advert) {
           res.status(404).json({ success: false });
@@ -93,23 +93,23 @@ router.get('/', async (req, res, next) => {
       }
     });
 
-    router.get('/:owner', async (req, res, next) => {
-      try {
-        const owner = req.params.owner;
+    // router.get('/:owner', async (req, res, next) => {
+    //   try {
+    //     const owner = req.params.owner;
     
-        const advert = await Adverts.find({owner: owner}).exec();
+    //     const advert = await Adverts.find({owner: owner}).exec();
     
-        if (!advert) {
-          res.status(404).json({ success: false });
-          return;
-        }
+    //     if (!advert) {
+    //       res.status(404).json({ success: false });
+    //       return;
+    //     }
     
-        res.json({ success: true, result: advert});
+    //     res.json({ success: true, result: advert});
     
-      } catch(err) {
-        next(err);
-      }
-    });
+    //   } catch(err) {
+    //     next(err);
+    //   }
+    // });
 
     
 

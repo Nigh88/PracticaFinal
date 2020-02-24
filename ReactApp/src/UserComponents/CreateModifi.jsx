@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-// import UserContext from '../user';
 import { searchTags, searchAdvertId } from '../Services/advertServices';
 import Select from 'react-dropdown-select';
 

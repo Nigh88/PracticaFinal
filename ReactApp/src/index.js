@@ -11,7 +11,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Profile from './UserComponents/Profile';
 import myAdverts from './UserComponents/myAdverts';
-import CreateModifi from './components/CreateModifi';
+import CreateModifi from './UserComponents/CreateModifi';
 import './index.css';
 import Advert from './components/Advert';
 import { createAdvert, updateAdvert } from './Services/advertServices';

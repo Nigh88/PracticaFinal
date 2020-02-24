@@ -9,7 +9,8 @@ class Login extends Component {
     this.state = {
     email: '',
     password: '',
-    token: ''
+    token: '',
+    isLogged: false,
     }
   }
 
@@ -33,6 +34,7 @@ class Login extends Component {
     .then(
         res => {
           if(res.success){
+            this.setState({isLogged: true})
             this.props.history.push('/Home');
             localStorage.setItem('token', (res.token))
           } else {

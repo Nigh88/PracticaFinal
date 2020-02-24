@@ -9,32 +9,32 @@ npm run dev
 
 ### Filtros
 
-    * Lista de anuncios
-    http://localhost:3001/api/anuncios
+    * Lista de adverts
+    http://localhost:3001/api/adverts
 
     * Nombre
-    http://localhost:3001/api/anuncios?name=(primeras letras o nombre completo)
+    http://localhost:3001/api/adverts?name=(primeras letras o nombre completo)
 
     * Venta o busqueda
-    http://localhost:3001/api/anuncios?sell=(true or false)
+    http://localhost:3001/api/adverts?sell=(true or false)
 
     * Limite
-    http://localhost:3001/api/anuncios?limit=(numero)
+    http://localhost:3001/api/adverts?limit=(numero)
 
     * Tag
-    http://localhost:3001/api/anuncios?tags=(tag a buscar)
+    http://localhost:3001/api/adverts?tags=(tag a buscar)
 
     * Precio
-    http://localhost:3001/api/anuncios?price=(precio o rango de precio)
+    http://localhost:3001/api/adverts?price=(precio o rango de precio)
         -Mayores o iguales de: X-
         -Menores o iguales de: -X
         -Rango de precio: X-X
         -Precio unico: X
     * Orden
-    http://localhost:3001/api/anuncios?sort=(parametro por el que colocar:nombre, precio,..)
+    http://localhost:3001/api/adverts?sort=(parametro por el que colocar:nombre, precio,..)
 
     *Ejemplo:
-    http://localhost:3001/api/anuncios?limit=4&sell=true&name=fo&tags=motor&sort=precio
+    http://localhost:3001/api/adverts?limit=4&sell=true&name=fo&tags=motor&sort=precio
 
     * Cargar imagenes
     http://localhost:3001/images/(nombre de la imagen)
@@ -45,7 +45,7 @@ npm run dev
         User: user@example.com  
         Password: 1234
     Recibimos un token con el que podremos acceder a la API:
-    /POST http://localhost:3001/api/anuncios?token=..........
+    /POST http://localhost:3001/api/adverts?token=..........
 
 # Subida de imagenes
     Cuando creemos un anuncio nuevo, debermos hacerlo con un form-data, y el campo de la foto, expecificar que es de tipo archivo
@@ -66,3 +66,7 @@ password: aaa23
 name: Snowy
 email: sun@example.com
 password: lol11
+
+#### Online Accsess
+
+ec2-3-21-45-31.us-east-2.compute.amazonaws.com

@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import  { searchAdvertId } from '../Services/advertServices';
-
+import { getUser } from '../Services/userServices';
 
 class Advert extends Component {
 
   constructor(props){
     super(props)
-    this.state = { advert: {}}
+    this.state = { advert: {}, isLogged: false,}
   }
 
   searchAdvertId(_id) { 
     if(!_id) {
   
-      this.setState( {advert: this.props.advert
-       
-    });
+      this.setState( {advert: this.props.advert});
   }
     else {
       searchAdvertId(_id).then(advertJson => {
@@ -44,15 +42,34 @@ class Advert extends Component {
   goToDetail = () => {
     this.props.history.push(`/advert/${this.state.advert._id}`);
   };
+
+  componentDidMount(){
+    getUser()
+    .then(
+        res => { 
+            if(res.success){
+                this.setState({
+                    name: res.user.name,
+                    email: res.user.email,
+                    isLogged: true
+                })  
+            } else { 
+            }  
+        }
+      )
+    } 
   
   render(){
-    const { advert } = this.state;
+    let { advert } = this.state;
+    if(this.props.advert){
+       advert = this.props.advert;
+    }
     const divStyle = {
        width: '18rem'
     };
 
     const cardStyle = {
-     margin: '1rem'
+     margin: '2rem'
    };
 
     return(
@@ -75,9 +92,12 @@ class Advert extends Component {
               <a href={`/advert/${this.state.advert._id}`} className="card-link">Details</a>
             </div>
             ):(<div></div>)}
+
+            {this.state.isLogged && this.state.advert.owner === this.state.name? ( 
             <div className="card-body">
               <a href={`/Update/${this.state.advert._id}`} className="card-link">UPDATE</a>
             </div>
+            ):(<div></div>)}
           </div>
         </div>
       </React.Fragment>

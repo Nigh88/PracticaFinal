@@ -29,7 +29,7 @@ export const searchTags = () => {
   };
 
   export const ownerAdverts = (owner) => {
-    return fetch(`${API}/api/adverts/${owner}`, {
+    return fetch(`${API}/api/adverts/owner/${owner}`, {
     method: "GET"
   }).then(res => res.json())
     .then(res => res.results);

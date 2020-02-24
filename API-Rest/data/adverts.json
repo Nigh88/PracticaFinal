@@ -1,76 +1,93 @@
   
 [     
     { 
+        "name": "Pencil Pro",       
+        "sell": true,       
+        "price": 400,   
+        "description": "There is not best pencil than this one.",
+        "photo": "pencil.jpg",       
+        "tags": [ "Office"],
+        "owner": "Snowy"
+    },     
+     { 
         "name": "Bicycle",       
         "sell": true,       
         "price": 230,   
         "description": "Its is not the best, but at least you could ride it.",
         "photo": "bycicle.jpg",       
-        "tags": [ "lifestyle", "motor"],
+        "tags": [ "Hobbies"],
         "owner": "Firechicken"
     },     
     {       
         "name": "iPhone S5",       
         "sell": false,       
-        "price": 100,       
+        "price": 100,     
+        "description": "A little old but works perfectly.",
         "photo": "iphones5.jpg",      
-        "tags": [ "lifestyle", "mobile"], 
+        "tags": [ "Home appliances"], 
         "owner": "KickBill"
     },
     { 
         "name": "Ford Mustang",       
         "sell": true,       
         "price": 34999,       
+        "description": "Too much horse power",
         "photo": "mustang.jpg",       
-        "tags": [ "lifestyle", "motor"],
-        "owner": "Nigh"     
+        "tags": [ "Motor"],
+        "owner": "Firechicken"     
     }, 
     { 
         "name": "Snowboard",       
         "sell": true,       
-        "price": 300,       
+        "price": 300,  
+        "description": "You will feel like riding in the clouds.",  
         "photo": "snowboard.jpg",       
-        "tags": [ "lifestyle"],
+        "tags": [ "Hobbies"],
         "owner": "Snowy"     
     },
     { 
         "name": "Hammer",       
         "sell": true,       
-        "price": 30,       
+        "price": 30,   
+        "description": "Just a hammer.",    
         "photo": "hammer.jpg",       
-        "tags": [ "work"],
+        "tags": [ "Motor"],
         "owner": "Firechicken"     
     },
     { 
         "name": "Galaxy Tab S3",       
         "sell": true,       
-        "price": 367,       
+        "price": 367,   
+        "description": "Too enjoy mcuh more the time in the WC.",    
         "photo": "galaxytab.jpg",       
-        "tags": [ "lifestyle", "mobile"],
+        "tags": [ "Home appliances"],
         "owner": "KickBill"     
     },
     { 
         "name": "TV Sony 32",       
         "sell": false,       
         "price": 2459,       
-        "photo": "tvsony.jpg",       
-        "tags": [ "lifestyle"],
+        "photo": "tvsony.jpg",  
+        "description": "A window to the world of the entertainment.",     
+        "tags": [ "Home appliances"],
         "owner": "KickBill"     
     },
     { 
         "name": "Office Desk",       
         "sell": true,       
         "price": 220,       
-        "photo": "desk.jpg",       
-        "tags": [ "lifestyle", "work"],
+        "photo": "desk.jpg", 
+        "description": "A pretty good desk.",      
+        "tags": [ "Office"],
         "owner": "Firechicken"     
     },
     { 
         "name": "Mini JCW",       
         "sell": true,       
-        "price": 21999,       
+        "price": 21999,     
+        "description": "Fast as the light.",  
         "photo": "minijcw.jpg",       
-        "tags": [ "lifestyle", "motor"],
+        "tags": [ "Motor"],
         "owner": "Snowy"     
     }
 ] 

@@ -82,7 +82,11 @@ class Navbar extends React.Component {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
 
-                
+                    {!this.state.isLogged?(   
+                    <li className="nav-item">
+                    <a className="nav-link" href="/Register">Register</a>
+                    </li>
+                     ):(
                     <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Options
@@ -92,17 +96,14 @@ class Navbar extends React.Component {
                         <a className="dropdown-item" href={"/adverts/" + this.state.name}>My adverts</a>
                     </div>
                     </li>
-                    
-                    <li className="nav-item">
-                    <a className="nav-link" href="/Register">Register</a>
-                    </li>
+                     )}
+
 
                     {!this.state.isLogged?(
                     <li className="nav-item">
                     <a className="nav-link" href="/Login">Login</a>
                     </li>
                     ):(
-                    
                     <li className="nav-item">
                     <a className="nav-link" href="/Profile">Profile</a>
                     </li>
@@ -110,22 +111,24 @@ class Navbar extends React.Component {
 
                     <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Filter by tags
+                        Categories
                     </a>
                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a className="dropdown-item" href="/home?tag=lifestyle">Lifestyle</a>
+                        <a className="dropdown-item" href="/home?tag=hogar">Hogar</a>
+                        <div className="dropdown-divider"></div>
+                        <a className="dropdown-item" href="/home?tag=hobbies">Hobbies</a>
+                        <div className="dropdown-divider"></div>
+                        <a className="dropdown-item" href="/home?tag=home_appliances">Home appliances</a>
+                        <div className="dropdown-divider"></div>
+                        <a className="dropdown-item" href="/home?tag=office">Office</a>
                         <div className="dropdown-divider"></div>
                         <a className="dropdown-item" href="/home?tag=motor">Motor</a>
-                        <div className="dropdown-divider"></div>
-                        <a className="dropdown-item" href="/home?tag=work">Work</a>
-                        <div className="dropdown-divider"></div>
-                        <a className="dropdown-item" href="/home?tag=mobile">Mobile</a>
                     </div>
                     </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0" onSubmit={this.onSubmit}>
-                    <input className="form-control mr-sm-2" type="number" placeholder="Min" aria-label="Min" name="min" onChange={this.onInputChange} value={this.state.min}/>
-                    <input className="form-control mr-sm-2" type="number" placeholder="Max" aria-label="Max" name="max" onChange={this.onInputChange} value={this.state.max}/>
+                    <input className="form-control mr-sm-2" type="number" placeholder="Min price" aria-label="Min" name="min" onChange={this.onInputChange} value={this.state.min}/>
+                    <input className="form-control mr-sm-2" type="number" placeholder="Max price" aria-label="Max" name="max" onChange={this.onInputChange} value={this.state.max}/>
                     <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" onChange={this.onInputChange} value={this.state.search}/>
                     <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
